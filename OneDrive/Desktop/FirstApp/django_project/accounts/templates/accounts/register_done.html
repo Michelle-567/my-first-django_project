@@ -1,0 +1,23 @@
+
+{% extends "base.html" %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<h1>Sign Up</h1>
+<form method="post">
+  {% csrf_token %}
+  
+  {{ form.as_p }}
+  
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="terms-checkbox" name="agree_to_terms">
+    <label class="form-check-label" for="terms-checkbox">I agree to the terms</label>
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Sign Up</button>
+</form>
+<p>
+  Already have an account? <a href="{% url 'login' %}">Login here</a>
+</p>
+{% endblock %}

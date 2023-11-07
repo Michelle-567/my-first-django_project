@@ -1,0 +1,45 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Statement of the Applicant</h2>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+
+            <!-- Full Name -->
+            <div class="form-group">
+                <label for="full_name">Full Name of the Applicant or Official Representative of the Company:</label>
+                <input type="text" class="form-control" id="full_name" name="full_name" required>
+            </div>
+
+            <!-- Date -->
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+
+            <!-- Statement Checkbox -->
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="statement_checkbox" name="statement_checkbox"
+                    required>
+                <label class="form-check-label" for="statement_checkbox">
+                    I certify that the statements contained in this form are correct to the best of my knowledge and
+                    belief at this time. I declare that, I agree to abide by the professional code of practice for
+                    members. I agree to accept the Institute’s decision regarding this application for membership. I
+                    agree that in the event that my application is considered I will advance the objectives of Quality
+                    practitioners, code of conduct and will advance the objectives of the membership to the best of my
+                    ability for such times that I remain a member.
+                </label>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="card specialization-card">
+        <div class="card-header">
+            <h3>Area Of Specialization</h3>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+
+                <!-- Specialization Field - Radio Buttons in Two Columns -->
+                <div class="form-group">
+                    <label>Areas of specialization that best refects your activities in quality related field</label><br>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input type="radio" id="trainer" name="{{ form.specialization.name }}" value="trainer"
+                                    class="form-check-input">
+                                <label for="trainer" class="form-check-label">Trainer</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" id="auditor" name="{{ form.specialization.name }}" value="auditor"
+                                    class="form-check-input">
+                                <label for="auditor" class="form-check-label">Auditor</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" id="assessor" name="{{ form.specialization.name }}" value="assessor"
+                                    class="form-check-input">
+                                <label for="assessor" class="form-check-label">Assessor</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" id="implementor" name="{{ form.specialization.name }}"
+                                    value="implementor" class="form-check-input">
+                                <label for="implementor" class="form-check-label">Implementor</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input type="radio" id="management_representative" name="{{ form.specialization.name }}"
+                                    value="management_representative" class="form-check-input">
+                                <label for="management_representative" class="form-check-label">Management
+                                    Representative</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" id="process_owner" name="{{ form.specialization.name }}"
+                                    value="process_owner" class="form-check-input">
+                                <label for="process_owner" class="form-check-label">Process Owner</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" id="quality_improvement_team_member"
+                                    name="{{ form.specialization.name }}" value="quality_improvement_team_member"
+                                    class="form-check-input">
+                                <label for="quality_improvement_team_member" class="form-check-label">Member of Quality
+                                    Improvement Team</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" id="quality_assurance_manager" name="{{ form.specialization.name }}"
+                                    value="quality_assurance_manager" class="form-check-input">
+                                <label for="quality_assurance_manager" class="form-check-label">Quality Assurance
+                                    Manager</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other form fields and HTML can be included here if needed -->
+
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+        <div class="form-group text-center">
+            <a href="{% url 'academic_qualification' %}" class="btn btn-secondary">Back</a>
+            <a href="{% url 'present_position' %}" class="btn btn-secondary">Next</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="card mt-5">
+        <div class="card-body">
+            <h2 class="card-title">Member Type</h2>
+            <form method="post" >
+                {% csrf_token %}
+                <fieldset>
+
+                    <div class="form-group">
+                        <label for="years_of_experience">Years of Experience in Relevant Quality-Related Field:</label>
+                        <p>Choose the option that best describes your years of experience.</p>
+                        {{ form.years_of_experience.label_tag }}
+                        <br>
+                        {{ form.years_of_experience }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="years_trained">Years Trained in relevant current standard<br>or business improvement
+                            related qualification</label>
+                        <input type="text">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="form-group text-center">
+        <a href="{% url 'registration' %}" class="btn btn-secondary">Back</a>
+        <a href="{% url 'application' %}" class="btn btn-secondary">Next</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %}Logged Out{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card">
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+
+                <div class="card-header">
+                    <h2 class="card-title">Logged Out</h2>
+                </div>
+                <div class="card-body">
+                    <p>
+                        You have been successfully logged out.
+                    </p>
+                    <p>
+                        If you want to sign in again, you can <a href="{% url 'login' %}">Sign in here</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

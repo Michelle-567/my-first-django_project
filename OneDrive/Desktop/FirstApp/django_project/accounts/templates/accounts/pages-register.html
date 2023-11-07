@@ -1,0 +1,49 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 d-flex flex-column align-items-center justify-content-center">
+          <div class="d-flex justify-content-center py-4">
+            <a href="index.html" class="logo d-flex align-items-center w-auto">
+              <img src="{% static 'assets/img/logo.png' %}" alt="Logo">
+              <span class="d-none d-lg-block">SIGN UP</span>
+            </a>
+          </div>
+          <div class="card mb-3">
+            <div class="card-body">
+              <form method="post" action="{% url 'register' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+              
+                <div class="form-group form-check">
+                  {{ form.agree_to_terms }}
+                  <label class="form-check-label" for="{{ form.agree_to_terms.id_for_label }}">
+                    {{ form.agree_to_terms.label_tag }}
+                  </label>
+                </div>
+                <div class="col-12">
+                  <button class="btn btn-primary w-100" type="submit">SIGN UP</button>
+                </div>
+                <br>
+                <div class="col-12">
+                  <p class="small mb-0">Already have an account? <a href="{% url 'login' %}">Log in</a></p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</main> <!-- Closing </main> tag -->
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+  <i class="bi bi-arrow-up-short"></i>
+</a>
+</body>
+
+</html>
+{% endblock %}

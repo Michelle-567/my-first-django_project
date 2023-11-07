@@ -1,0 +1,54 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">Information on Present Position</h1>
+            <p><strong>Give a brief description of current Quality-related responsibilities<br>(Indicate if there are
+                    additional responsibilities since the initial application)</strong></p>
+            <form method="post" class="form">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <div class="form-group">
+                    <label for="{{ form.brief_description.id_for_label }}">Brief Description:</label>
+                    <input type="text" name="{{ form.brief_description.name }}" id="{{ form.brief_description.id }}"
+                        class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.any_other_specify.id_for_label }}">Any Other Specify:</label>
+                    <input type="text" name="{{ form.any_other_specify.name }}" id="{{ form.any_other_specify.id }}"
+                        class="form-control">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="{{ form.tenure_years.id_for_label }}">Tenure (Years):</label>
+                        <input type="number" name="{{ form.tenure_years.name }}" id="{{ form.tenure_years.id }}"
+                            class="form-control">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="{{ form.tenure_months.id_for_label }}">Tenure (Months):</label>
+                        <input type="number" name="{{ form.tenure_months.name }}" id="{{ form.tenure_months.id }}"
+                            class="form-control">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+        <div class="form-group text-center">
+            <a href="{% url 'specialization' %}" class="btn btn-secondary">Back</a>
+            <a href="{% url 'tenure' %}" class="btn btn-secondary">Next</a>
+        </div>
+    </div>
+</div>
+
+<!-- Include Bootstrap JS (you may need to adjust the paths) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+{% endblock %}

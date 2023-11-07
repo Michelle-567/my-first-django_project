@@ -1,0 +1,57 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="card course-registration-card">
+        <div class="card-header">
+            <h3>Courses/Training related to Quality Management</h3>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+
+                <!-- Course/Training Name Field -->
+                <div class="form-group">
+                    <label for="course_name">Course/Training:</label>
+                    <input type="text" id="course_name" name="course_name" class="form-control">
+                </div>
+
+                <!-- Course Duration Field -->
+                <div class="form-group">
+                    <label for="course_duration">Course Duration:</label>
+                    <input type="number" id="course_duration" name="course_duration" class="form-control">
+                </div>
+
+                <!-- Organization Field -->
+                <div class="form-group">
+                    <label for="organization">Organization:</label>
+                    <input type="text" id="organization" name="organization" class="form-control">
+                </div>
+
+                    <!-- Certificate Field -->
+                    <div class="form-group">
+                        <label for="{{ form.certificate.id_for_label }}">Achievement/Certificate Awarded:</label>
+                        <input type="file">
+
+                        {{ form.certificate }}
+                    </div>
+
+                <!-- Certificate Testimonials Field -->
+                <div class="form-group">
+                    <label for="testimonials">Certificate Testimonials:</label>
+                    <textarea id="testimonials" name="testimonials" class="form-control" rows="4"></textarea>
+                </div>
+                
+                <!-- Other form fields and HTML can be included here if needed -->
+
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+        <div class="form-group text-center">
+            <a href="{% url 'tenure' %}" class="btn btn-secondary">Back</a>
+            <a href="{% url 'other_training' %}" class="btn btn-secondary">Next</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

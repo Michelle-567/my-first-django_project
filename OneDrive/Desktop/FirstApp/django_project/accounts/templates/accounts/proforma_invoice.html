@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .invoice {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .invoice h1 {
+            font-size: 24px;
+        }
+
+        .invoice .header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .invoice .from {
+            text-align: left;
+        }
+
+        .invoice .to {
+            text-align: right;
+        }
+
+        .invoice .details {
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .invoice table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .invoice th,
+        .invoice td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .invoice th {
+            background-color: #f2f2f2;
+        }
+
+        .invoice .total {
+            margin-top: 20px;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="invoice">
+        <div class="header">
+            <div class="from">
+                <h1>Proforma Invoice</h1>
+                <p>010-000-111</p>
+                <p>abc@gmail.com</p>
+                <p>website.com</p>
+                <p>Address</p>
+                <p>30, Nakuru</p>
+                <p>Kenya</p>
+            </div>
+            <div class="to">
+                <p>Billed To</p>
+                <h2>ABC Limited</h2>
+                <p>Date of Issue: 01/01/2021</p>
+            </div>
+        </div>
+
+        <div class="details">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Cost</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Application fee</td>
+                        <td>KSH 5000</td>
+                        <td>KSH 5000</td>
+                    </tr>
+                    <tr>
+                        <td>Senior consultant</td>
+                        <td>KSH 15000</td>
+                        <td>KSH 20000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="total">
+            <p><strong>Total amount: KSH 20000</strong></p>
+        </div>
+    </div>
+</body>
+
+</html>
