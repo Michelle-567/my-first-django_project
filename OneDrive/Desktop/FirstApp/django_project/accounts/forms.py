@@ -11,22 +11,35 @@ class LoginForm(forms.Form):
     #  email= forms.EmailField()
      password = forms.CharField(widget=forms.PasswordInput)
 
-class UserRegistrationForm(forms.ModelForm):
-    email= forms.EmailField(max_length=50)
-    first_name = forms.CharField(max_length=50)
-    last_name = forms.CharField(max_length=50)
-    phone = forms.CharField(max_length=50)
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Retype Password', widget=forms.PasswordInput)
+# class UserRegistrationForm(forms.ModelForm):
+#     email= forms.EmailField(max_length=50)
+#     first_name = forms.CharField(max_length=50)
+#     last_name = forms.CharField(max_length=50)
+#     phone = forms.CharField(max_length=50)
+#     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
+#     password2 = forms.CharField(label='Retype Password', widget=forms.PasswordInput)
 
-    agree_to_terms = forms.BooleanField(
-        required=True,
-        label='I agree to the Terms of Use and Privacy Policy',
-        widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}),
-    )
+#     agree_to_terms = forms.BooleanField(
+#         required=True,
+#         label='I agree to the Terms of Use and Privacy Policy',
+#         widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+#     )
+#     class Meta:
+#         model = User
+#         fields = ( 'first_name', 'last_name','phone', 'email', 'password1', 'password2' )
+
+class UserRegistrationForm(UserCreationForm):
+    email = forms.EmailField(max_length=50, widget=forms.EmailInput(attrs={'class': 'form-control'}))
+    first_name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    last_name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    phone = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    password2 = forms.CharField(label='Retype Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+
     class Meta:
         model = User
-        fields = ( 'first_name', 'last_name','phone', 'email', 'password1', 'password2' )
+        fields = ('first_name', 'last_name', 'phone', 'email', 'password1', 'password2')
+
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
@@ -88,6 +101,8 @@ class CourseRegistrationForm(forms.ModelForm):
         model = CourseRegistration
         fields = ['course_name', 'course_duration', 'organization', 'achievement', 'testimonials']
 
+
+
 class OtherTrainingForm(forms.ModelForm):
     class Meta:
         model = OtherTraining
@@ -101,11 +116,6 @@ class StatementOfApplicantForm(forms.ModelForm):
         fields = ['statement']
 
 
-# class MembershipApplicationForm(forms.Form):
-#     name = forms.CharField(max_length=100)
-#     email = forms.EmailField()
-#     phone_number = forms.CharField(max_length=15)
-#     membership_type = forms.ChoiceField(choices=[('Renewal', 'Renewal'), ('New Member', 'New Member')])
 
 
 

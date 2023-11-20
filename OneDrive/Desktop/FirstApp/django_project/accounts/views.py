@@ -15,6 +15,14 @@ from .forms import UserProfileForm
 def index(request):
     return render(request, 'pages/index.html')
 
+
+def begin_application(request):
+    # Your logic for handling the beginning of the application process
+    # ...
+
+    return render(request, 'accounts/begin_application.html')  # Render the application form page
+
+
 def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -94,7 +102,8 @@ def member_type_view(request):
             # request.user.profile.save()
 
             # Redirect to a success page or another appropriate response
-            return redirect('success_page')
+            messages.success(request, "send")
+            return redirect('application')
     else:
         form = MemberTypeForm()
 
@@ -107,7 +116,7 @@ def application_view(request):
             application = form.save(commit=False)
             application.user = request.user
             application.save()
-            return redirect('success_page')
+            return redirect('academic_qualification')
     else:
         form = ApplicationForm()
 
@@ -120,7 +129,7 @@ def academic_qualification_view(request):
             academic_qualification = form.save(commit=False)
             academic_qualification.user = request.user
             academic_qualification.save()
-            return redirect('success_page')  # Redirect to a success page
+            return redirect('present_position')  # Redirect to a success page
     else:
         form = AcademicQualificationForm()
 
@@ -134,7 +143,7 @@ def present_position_info_view(request):
             present_position_info = form.save(commit=False)
             present_position_info.user = request.user  # Associate with the logged-in user
             present_position_info.save()
-            return redirect('success_page')  # Redirect to a success page
+            return redirect('specialization')  # Redirect to a success page
     else:
         form = PresentPositionInfoForm()
 
@@ -147,7 +156,7 @@ def specialization_view(request):
             specialization = form.save(commit=False)
             specialization.user = request.user  # Associate with the logged-in user
             specialization.save()
-            return redirect('success_page')  # Redirect to a success page
+            return redirect('tenure')  # Redirect to a success page
     else:
         form = SpecializationForm()
 
@@ -163,7 +172,7 @@ def tenure_form(request):
             tenure = form.save(commit=False)
             tenure.user = request.user
             tenure.save()
-            return redirect('success_page')  # Replace 'success_page' with the appropriate URL
+            return redirect('courses')  # Replace 'success_page' with the appropriate URL
     else:
         form = TenureForm()
 
@@ -176,7 +185,7 @@ def course_registration(request):
             course = form.save(commit=False)
             course.user = request.user
             course.save()
-            return redirect('success_page')  # Replace 'success_page' with the appropriate URL
+            return redirect('other_training')  # Replace 'success_page' with the appropriate URL
     else:
         form = CourseRegistrationForm()
 
@@ -189,7 +198,7 @@ def other_training_view(request):
             training = form.save(commit=False)
             training.user = request.user
             training.save()
-            return redirect('success_page')  # Replace 'success_page' with the appropriate URL
+            return redirect('statement_form')  # Replace 'success_page' with the appropriate URL
     else:
         form = OtherTrainingForm()
 

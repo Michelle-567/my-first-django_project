@@ -1,5 +1,8 @@
 {% extends "layouts/base.html" %}
 {% load static %}
+
+{% block title %}Pages / Register - NiceAdmin Bootstrap Template{% endblock %}
+
 {% block content %}
 <div class="container">
   <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
@@ -16,14 +19,12 @@
             <div class="card-body">
               <form method="post" action="{% url 'register' %}">
                 {% csrf_token %}
-                {{ form.as_p }}
-              
+                {{ form.as_table }}
                 <div class="form-group form-check">
-                  {{ form.agree_to_terms }}
-                  <label class="form-check-label" for="{{ form.agree_to_terms.id_for_label }}">
-                    {{ form.agree_to_terms.label_tag }}
-                  </label>
+                  <input type="checkbox" class="form-check-input" id="agree" name="agree_to_terms">
+                  <label class="form-check-label" for="agree">I agree to the terms of use and privacy policy</label>
                 </div>
+
                 <div class="col-12">
                   <button class="btn btn-primary w-100" type="submit">SIGN UP</button>
                 </div>
@@ -39,11 +40,4 @@
     </div>
   </section>
 </div>
-</main> <!-- Closing </main> tag -->
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
-  <i class="bi bi-arrow-up-short"></i>
-</a>
-</body>
-
-</html>
 {% endblock %}

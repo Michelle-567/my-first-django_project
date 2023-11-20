@@ -1,0 +1,10 @@
+{% extends "layouts/base.html "%}
+{% load static %}
+{% block content %}
+<form action="{% url 'payment' application.id %}" method="post">
+    {% csrf_token %}
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="{{ STRIPE_PUBLIC_KEY }}"
+        data-description="Membership Payment" data-amount="{{ application.total_payment * 100 }}" data-locale="auto">
+        </script>
+</form>
+{% endblock %}
