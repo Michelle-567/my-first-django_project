@@ -12,9 +12,9 @@ class ApplicationAdmin(admin.ModelAdmin):
 
 class SpecializationAdmin(admin.ModelAdmin):
     list_display = ('user', 'specialization')
-    list_filter = ('specialization',)
-    search_fields = ('user__username', 'specialization')
-    list_per_page = 20
+    # list_filter = ('specialization',)
+    # search_fields = ('user__username', 'specialization')
+    # list_per_page = 20
 
 admin.site.register(Specialization)
 

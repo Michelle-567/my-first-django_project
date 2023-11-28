@@ -11,6 +11,33 @@ class LoginForm(forms.Form):
     #  email= forms.EmailField()
      password = forms.CharField(widget=forms.PasswordInput)
 
+
+class UserRegistrationForm(UserCreationForm):
+    email = forms.EmailField(max_length=50)
+    first_name = forms.CharField(max_length=50)
+    last_name = forms.CharField(max_length=50)
+    phone = forms.CharField(max_length=50)
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Retype Password', widget=forms.PasswordInput)
+
+
+    agree_to_terms = forms.BooleanField(
+        required=True,
+        label='I agree to the Terms of Use and Privacy Policy',
+        widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+    )
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'phone', 'email', 'password1', 'password2']
+
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        if User.objects.filter(username=username).exists():
+            raise forms.ValidationError('This username is already taken. Please choose a different one.')
+        return username
+
+
 # class UserRegistrationForm(forms.ModelForm):
 #     email= forms.EmailField(max_length=50)
 #     first_name = forms.CharField(max_length=50)
@@ -88,7 +115,8 @@ class SpecializationForm(forms.ModelForm):
     class Meta:
         model = Specialization
         fields = ['specialization']
-        # exclude = ['user']
+        exclude = ['user']
+
 
 class TenureForm(forms.ModelForm):
     class Meta:

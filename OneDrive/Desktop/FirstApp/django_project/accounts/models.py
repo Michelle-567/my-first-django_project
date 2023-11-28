@@ -56,6 +56,24 @@ class PresentPositionInfo(models.Model):
 
 
 
+# SPECIALIZATION_CHOICES = [
+#     ('trainer', 'Trainer'),
+#     ('auditor', 'Auditor'),
+#     ('assessor', 'Assessor'),
+#     ('implementor', 'Implementor'),
+#     ('management_representative', 'Management Representative'),
+#     ('process_owner', 'Process Owner'),
+#     ('quality_improvement_team_member', 'Member of Quality Improvement Team'),
+#     ('quality_assurance_manager', 'Quality Assurance Manager'),
+# ]
+# class Specialization(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE)  
+#     specialization = models.CharField(max_length=50, choices=SPECIALIZATION_CHOICES)
+
+#     def __str__(self):
+#         return f"{self.user.username}'s specialization: {self.specialization}"
+
+
 SPECIALIZATION_CHOICES = [
     ('trainer', 'Trainer'),
     ('auditor', 'Auditor'),
@@ -68,17 +86,16 @@ SPECIALIZATION_CHOICES = [
 ]
 
 class Specialization(models.Model):
-    # user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     specialization = models.CharField(max_length=50, choices=SPECIALIZATION_CHOICES)
 
     def __str__(self):
-        if self.user:
-            return f"{self.user.username}'s specialization: {self.specialization}"
-        else:
-            return f"Specialization (no associated user)"
+        return f"{self.user.username}'s specialization: {self.specialization}"
+
+
 class Tenure(models.Model):
     
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+    #user = models.ForeignKey(User, on_delete=models.CASCADE)
     name_of_organization = models.CharField(max_length=100)
     date_from = models.DateField()
     date_to = models.DateField()

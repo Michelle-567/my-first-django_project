@@ -36,7 +36,7 @@ def login_view(request):
             if user is not None:
                 # Log in the user
                 auth_login(request, user)
-                # Redirect to a success page or any other page
+                # Redirect to a success page or any other page 
                 return redirect('index')
             else:
                 # Handle invalid login (e.g., show an error message)
@@ -149,12 +149,26 @@ def present_position_info_view(request):
 
     return render(request, 'accounts/present_position_info_form.html', {'form': form})
 
+# def specialization_view(request):
+#     if request.method == 'POST':
+#         form = SpecializationForm(request.POST)
+#         if form.is_valid():
+#             specialization = form.save(commit=False)
+#             specialization.user = request.user  # Associate with the logged-in user
+#             specialization.save()
+#             return redirect('tenure')  # Redirect to a success page
+#     else:
+#         form = SpecializationForm()
+
+#     return render(request, 'accounts/specialization_form.html', {'form': form})
+
+ 
 def specialization_view(request):
     if request.method == 'POST':
         form = SpecializationForm(request.POST)
         if form.is_valid():
             specialization = form.save(commit=False)
-            specialization.user = request.user  # Associate with the logged-in user
+            specialization.user = request.user  # Assuming request.user is providing the user object
             specialization.save()
             return redirect('tenure')  # Redirect to a success page
     else:
