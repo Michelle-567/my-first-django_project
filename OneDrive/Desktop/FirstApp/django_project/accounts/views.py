@@ -15,12 +15,21 @@ from .forms import UserProfileForm
 def index(request):
     return render(request, 'pages/index.html')
 
+# def dashboard(request):
+#     # Fetch data from the database or use dummy data
+    # cards = DashboardCard.objects.all()
 
-def begin_application(request):
-    # Your logic for handling the beginning of the application process
-    # ...
+    # Handle membership card form
+    # if request.method == 'POST':
+    #     membership_form = MembershipCardForm(request.POST)
+    #     if membership_form.is_valid():
+    #         membership_form.save()
+            
+    # else:
+    #     membership_form = MembershipCardForm()
 
-    return render(request, 'accounts/begin_application.html')  # Render the application form page
+    # # return render(request, 'pages/index.html', {'cards': cards, 'membership_form': membership_form})
+
 
 
 def login_view(request):

@@ -134,13 +134,11 @@ class StatementOfApplicant(models.Model):
         return self.user.username
 
 
-# class MembershipApplication(models.Model):
-#     name = models.CharField(max_length=100)
-#     email = models.EmailField()
-#     phone_number = models.CharField(max_length=15)
-#     membership_type = models.CharField(max_length=20)
-#     total_payment = models.DecimalField(max_digits=10, decimal_places=2)
-#     payment_status = models.BooleanField(default=False)
+# class MembershipCard(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE)
+#     membership_number = models.CharField(max_length=20)
+#     expiration_date = models.DateField()
+#     # Add other fields as needed
 
     
 
